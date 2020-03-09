@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getTodos } from "../../actions/Todos";
+import { getTodos} from "../../actions/Todos";
+import TodoItem from './TodoItem';
 
 export class TodoList extends Component {
   componentDidMount() {
@@ -12,12 +13,7 @@ export class TodoList extends Component {
         <h1>Todos</h1>
         <ul className="list-group">
           {this.props.todos.map(todo => (
-            <li key={todo.id} className="list-group-item">
-              <input type="checkbox" />
-              {'  '}
-              {todo.name}
-              <button className="btn btn-danger btn-sm float-right">X</button>
-            </li>
+            <TodoItem todoItem={todo} key={todo.id}/>
           ))}
         </ul>
       </div>
