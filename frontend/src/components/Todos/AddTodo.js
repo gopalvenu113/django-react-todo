@@ -47,7 +47,7 @@ export class AddTodo extends Component {
               placeholder="Todo Description"
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-secondary">
             AddTodo
           </button>
         </form>
