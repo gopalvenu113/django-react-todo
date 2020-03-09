@@ -6,7 +6,7 @@ export default function Todos() {
     return (
         <div>
             <div className='container'>
-                <h1><strong>ToDos</strong></h1>
+                <h1 style={{fontSize: '10em', textAlign:'center', color:'grey'}}><strong>ToDos</strong></h1>
             </div>
             <div>
                 <AddTodo />

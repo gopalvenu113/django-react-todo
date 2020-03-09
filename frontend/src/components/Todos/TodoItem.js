@@ -21,6 +21,7 @@ export class TodoItem extends Component {
       <Fragment>
         <li
           className="list-group-item"
+          id="list-item"
           style={this.textStyle()}
           onClick={() => {
             this.onClick();
@@ -34,6 +35,7 @@ export class TodoItem extends Component {
               this.onChange(todo);
             }}
           />
+          <span className='todo-body' style={this.textStyle()}>{todo.body}</span>
           {todo.name}
           <button
             className="btn btn-danger btn-sm float-right"
@@ -44,9 +46,6 @@ export class TodoItem extends Component {
             X
           </button>
         </li>
-        <div className="container" style={this.toggleDisplay()}>
-          {todo.body}
-        </div>
       </Fragment>
     );
   }
@@ -54,36 +53,11 @@ export class TodoItem extends Component {
     if (this.props.todoItem.is_completed) {
       return {
         textDecoration: "line-through",
-        color: "grey",
         fontSize: "1.3em"
       };
     }
     return {
       fontSize: "1.5em"
-    };
-  };
-
-  toggleDisplay = () => {
-    if (!this.state.isBodyShowing) {
-      return {
-        display: "none"
-      };
-    }
-    if (this.props.todoItem.is_completed) {
-      return {
-        textDecoration: "line-through",
-        color: "grey",
-        fontSize: "1.3em",
-        borderStyle: "solid",
-        borderColor: "lightGrey",
-        borderWidth: "thin"
-      };
-    }
-    return {
-      borderStyle: "solid",
-      borderColor: "lightGrey",
-      borderWidth: "thin",
-      fontSize: "2em"
     };
   };
 }

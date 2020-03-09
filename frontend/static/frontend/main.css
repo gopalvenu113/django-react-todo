@@ -1,0 +1,21 @@
+#list-item{
+    position: relative;
+}
+
+#list-item .todo-body{
+    visibility: hidden;
+    width: 50%;
+    background-color: grey;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 25%;
+}
+
+#list-item:hover .todo-body{
+    visibility: visible;
+}
