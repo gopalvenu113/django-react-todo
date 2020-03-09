@@ -3,18 +3,32 @@ import { connect } from "react-redux";
 import { delTodo, toggleTodo } from "../../actions/Todos";
 
 export class TodoItem extends Component {
+  state = {
+    isBodyShowing: false
+  };
   onChange = todo => {
     (todo.is_completed = !todo.is_completed),
       this.props.toggleTodo(todo.id, todo);
+  };
+  onClick = () => {
+    this.setState({
+      isBodyShowing: !this.state.isBodyShowing
+    });
   };
   render() {
     const todo = this.props.todoItem;
     return (
       <Fragment>
-        <li className="list-group-item" style={this.textStyle()}>
+        <li
+          className="list-group-item"
+          style={this.textStyle()}
+          onClick={() => {
+            this.onClick();
+          }}
+        >
           <input
             type="checkbox"
-            style={{ "margin-right": "0.5em", transform: "scale(1.5)" }}
+            style={{ marginRight: "0.5em", transform: "scale(1.5)" }}
             checked={todo.is_completed}
             onChange={() => {
               this.onChange(todo);
@@ -30,6 +44,9 @@ export class TodoItem extends Component {
             X
           </button>
         </li>
+        <div className="container" style={this.toggleDisplay()}>
+          {todo.body}
+        </div>
       </Fragment>
     );
   }
@@ -43,6 +60,30 @@ export class TodoItem extends Component {
     }
     return {
       fontSize: "1.5em"
+    };
+  };
+
+  toggleDisplay = () => {
+    if (!this.state.isBodyShowing) {
+      return {
+        display: "none"
+      };
+    }
+    if (this.props.todoItem.is_completed) {
+      return {
+        textDecoration: "line-through",
+        color: "grey",
+        fontSize: "1.3em",
+        borderStyle: "solid",
+        borderColor: "lightGrey",
+        borderWidth: "thin"
+      };
+    }
+    return {
+      borderStyle: "solid",
+      borderColor: "lightGrey",
+      borderWidth: "thin",
+      fontSize: "2em"
     };
   };
 }
