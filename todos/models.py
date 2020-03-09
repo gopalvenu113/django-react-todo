@@ -7,7 +7,7 @@ class Todo(models.Model):
     body = models.CharField(max_length=500, null=True, blank=True)
     is_completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, related_name='todos', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='todos', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.name

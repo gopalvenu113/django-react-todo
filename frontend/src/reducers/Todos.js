@@ -1,4 +1,4 @@
-import {GET_TODOS} from "../actions/types";
+import {GET_TODOS, ADD_TODO} from "../actions/types";
 
 const initialState = {
   todos: []
@@ -11,6 +11,11 @@ export default function(state = initialState, action) {
         ...state,
         todos: action.payload
       };
+    case ADD_TODO:
+      return {
+        ...state,
+        todos: [...state.todos, action.payload]
+      }
     default:
       return state;
   }
